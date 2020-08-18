@@ -14,10 +14,9 @@ RUN npm install -g npm
 RUN npm install --save jquery@3.5.1 popper.js@1.16.1 bootstrap react react-dom next react-bootstrap firebase && \
     npm install @fortawesome/fontawesome-free lazysizes
 # Typescript
-RUN npm install --save-dev @types/jquery @types/popper.js @types/bootstrap && \
-    npm install --save-dev typescript @types/react @types/react-dom @types/node @types/react-bootstrap  @types/firebase && \
+RUN npm install --save-dev @types/jquery @types/popper.js @types/bootstrap @types/react-bootstrap && \
+    npm install --save-dev typescript @types/react @types/react-dom @types/node @types/firebase && \
     npm install --save @zeit/next-css
-
 
 # Hosting
 WORKDIR $APP

@@ -1,0 +1,29 @@
+# Keys
+keys/
+FirebaseAdminKey.json
+www.zip
+www.zip.tmp
+himitu/
+
+# Javascript/Typescript
+node_modules/
+package-lock.json
+src/
+
+# Nextjs
+.next/
+next-env.d.ts
+
+# Python
+__pycache__/
+
+# golang
+*.elf
+*.exe
+
+# server
+tmp/
+db/
+
+# VScode
+.vscode/
