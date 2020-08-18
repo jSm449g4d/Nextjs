@@ -1,8 +1,11 @@
+import React, { useState, useEffect } from 'react';
+import ReactDOM from "react-dom";
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/styles.sass'
 
 
 
@@ -17,9 +20,10 @@ export default () => (
         </Link>
 
 
-
     </div>
 );
+
+
 
 export const AppM = () => {
     const [tmpText, setTmpText] = useState("")
@@ -31,11 +35,11 @@ export const AppM = () => {
             <textarea className="form-control m-1" rows={5} value={tmpText}
                 onChange={(evt: any) => { setTmpText(evt.target.value) }}></textarea>
             <div className="d-flex">
-                <button className="flex-fill btn btn-success btn-lg m-1" type="button"
+                <button className="flex-fill btn btn-success btn-lg btn-push m-1" type="button"
                     onClick={() => { }}>
                     <i className="fas fa-paper-plane mr-1" style={{ pointerEvents: "none" }}></i>変更する
                 </button>
-                <button className="flex-fill btn btn-secondary btn-lg m-1" type="button"
+                <button className="flex-fill btn btn-secondary btn-lg btn-push m-1" type="button"
                     onClick={() => { setTmpText(""); setTmpSwitch(""); }}>
                     <i className="fas fa-times mr-1" style={{ pointerEvents: "none" }}></i>変更中止
                 </button>

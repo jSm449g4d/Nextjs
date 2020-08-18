@@ -16,7 +16,7 @@ RUN npm install --save jquery@3.5.1 popper.js@1.16.1 bootstrap react react-dom n
 # Typescript
 RUN npm install --save-dev @types/jquery @types/popper.js @types/bootstrap @types/react-bootstrap && \
     npm install --save-dev typescript @types/react @types/react-dom @types/node @types/firebase && \
-    npm install --save @zeit/next-css
+    npm install --save @zeit/next-css @zeit/next-sass node-sass
 
 # Hosting
 WORKDIR $APP
