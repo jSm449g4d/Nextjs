@@ -2,8 +2,8 @@
     "compilerOptions": {
       "sourceMap": true,
       "noImplicitAny": true,
-      "module": "esnext",
-      "target": "es6",
+      "module": "es2020",
+      "target": "es2020",
       "jsx": "preserve",
       "lib": ["dom", "dom.iterable", "esnext"],
       "allowJs": true,

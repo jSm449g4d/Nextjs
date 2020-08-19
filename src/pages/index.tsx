@@ -2,26 +2,49 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from "react-dom";
 import Head from 'next/head';
 import Link from 'next/link';
-import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
+import { AppWidgetHead, AppWidgetFoot } from '../components/widget'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/styles.sass'
-
-
-
-export default () => (
-    <div>
-        <Head>
-            <title>APP_TSX</title>
-        </Head>
-        <div>Welcome to next.js!</div>
-        <Link href="/fetch">
-            <AppM />
-        </Link>
+import '../stylesheets/styles.sass'
 
 
-    </div>
-);
+export default () => {
+    const router = useRouter()
+    useEffect(() => {
+        if ("pages" in router.query == false) {
+            import("../pages/homepage").then((module) => {
+                ReactDOM.unmountComponentAtNode(document.getElementById("appMain"));
+                ReactDOM.render(<module.AppMain />, document.getElementById("appMain"));
+            })
+        }
+        else {
+            import("../pages/" + router.query["pages"]).then((module) => {
+                ReactDOM.unmountComponentAtNode(document.getElementById("appMain"));
+                ReactDOM.render(<module.AppMain />, document.getElementById("appMain"));
+            })
+        }
+        ReactDOM.unmountComponentAtNode(document.getElementById("widgetHead"));
+        ReactDOM.render(<AppWidgetHead />, document.getElementById("widgetHead"));
+        ReactDOM.unmountComponentAtNode(document.getElementById("widgetFoot"));
+        ReactDOM.render(<AppWidgetFoot />, document.getElementById("widgetFoot"));
+    }, [])
+
+    return (
+        <div>
+            <Head>
+                <title>APP_TSX</title>
+                <link href="/static/node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet" />
+                <link href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+                <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
+                <script src="/static/node_modules/popper.js/dist/umd/popper.min.js"></script>
+                <script src="/static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            </Head>
+            <div id="widgetHead">AppWidgetHead loading...</div>
+            <div id="appMain">appMain loading...</div>
+            <div id="widgetFoot">AppWidgetFoot loading...</div>
+        </div>
+    )
+};
 
 
 
