@@ -15,12 +15,16 @@ export default () => {
             import("../pages/homepage").then((module) => {
                 ReactDOM.unmountComponentAtNode(document.getElementById("appMain"));
                 ReactDOM.render(<module.AppMain />, document.getElementById("appMain"));
+                ReactDOM.unmountComponentAtNode(document.getElementById("widget_titlelogo"));
+                ReactDOM.render(<module.TitleLogo />, document.getElementById("widget_titlelogo"));
             })
         }
         else {
             import("../pages/" + router.query["pages"]).then((module) => {
                 ReactDOM.unmountComponentAtNode(document.getElementById("appMain"));
                 ReactDOM.render(<module.AppMain />, document.getElementById("appMain"));
+                ReactDOM.unmountComponentAtNode(document.getElementById("widget_titlelogo"));
+                ReactDOM.render(<module.TitleLogo />, document.getElementById("widget_titlelogo"));
             })
         }
         ReactDOM.unmountComponentAtNode(document.getElementById("widgetHead"));
